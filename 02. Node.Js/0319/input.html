@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <input type = "text" value="123" id = "textOrigin">
+        <input type = "button" value="출력" id = "Btn">
+        <br>
+        <input type = "text" id = "textCopy">
+    </body>
+    <script>
+        document.getElementById("Btn").addEventListener('click', function(){
+            document.getElementById("textCopy").value = document.getElementById("textOrigin").value
+            console.log("버튼 입력: " +document.getElementById("textCopy").value)
+        })
+        document.getElementById("textOrigin").addEventListener('keydown', function(e){
+            if(e.key === 'Enter'){
+                document.getElementById("textCopy").value = document.getElementById("textOrigin").value
+                console.log("enter입력: " + document.getElementById("textCopy").value)
+            }
+        });
+    </script>
+</html> 

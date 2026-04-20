@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+        <span id ="question"> 
+        </span>
+        <span id ="result"> 
+        </span><br>
+        <input type="button" value="계산" id="chkBtn">
+    </body>
+    <script>
+        let box = document.getElementById("question");
+        let resultBox = document.getElementById("result");
+
+        for(let i=1; i<4; i++){
+            let row = `${i}번&nbsp;&nbsp`
+
+            for(let j=0; j<=4; j++){
+                row += `${j}<input type="radio" name="r${i}">&nbsp&nbsp;`
+            }
+
+            row += `가중치<input type="text" name="t${i}"><br>`
+            box.innerHTML += row;
+        }
+
+        document.getElementById("chkBtn").addEventListener('click', function(){
+            let num1 = [];
+            let num2 = [];
+            let realResult = "";
+
+            for(let i=1; i<4; i++){
+                let radioArr = document.getElementsByName(`r${i}`);
+              
+                for(let j=0; j<=4; j++){
+                    if(radioArr[j].checked){
+                        let num = document.getElementsByName(`t${i}`)[0].value;
+                        num1[i] = j*num;
+                        num2[i] = j+"x"+num;
+                    }
+                }
+            }
+
+            realResult = num2[1] + " + " + num2[2] + " + " + num2[3] + " = " + (num1[1] + num1[2] + num1[3]);
+            resultBox.innerHTML = realResult;
+        });
+    </script>
+</html>

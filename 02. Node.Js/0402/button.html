@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id = "buttonArea"></div>
+        <div id = "buttonArea2"></div>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        let buttonAreatxt=""
+        for(let i=0; i<100; i++){
+            buttonAreatxt += `<input type = "button" value= ${i+1}>`;
+            if((i+1)%10==0){
+                buttonAreatxt += `<br>`;
+            }
+        }
+
+        buttonAreatxt += `<br>`;
+
+        //document.getElementById("buttonArea").innerHTML = buttonAreatxt;
+        $("#buttonArea").html(buttonAreatxt);
+
+        let buttonAreatxt2=""
+        for(let i=0; i<100; i++){
+             $("#buttonArea2").append(`<input type = "button" value = ${i+1}>`);
+             if((i+1)%10==0){
+                 $("#buttonArea2").append(`<br>`);
+            }
+        }
+        
+    </script>
+</html> 

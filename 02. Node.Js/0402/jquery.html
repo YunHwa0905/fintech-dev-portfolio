@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id = "upArea">up</div>
+        <input type="text" id="inputTxt" value="123"><br>
+        <input type="button" value="앞" id ="frontBtn">
+        <input type="button" value="뒤" id ="BackBtn">
+        <div id="downArea">down</div>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        console.log(document.getElementById("inputTxt").value);
+        console.log($("#inputTxt").val());
+
+        document.getElementById("frontBtn").addEventListener('click', function(){
+            document.getElementById("upArea").innerHTML = document.getElementById("inputTxt").value;
+        });
+
+        $("#frontBtn").click(function(){
+            $("#upArea").html($("#inputTxt").val());
+        });
+
+        $("#BackBtn").click(function(){
+            $("#downArea").html($("#inputTxt").val());
+        });
+    </script>
+</html> 

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+        <div id = "replyArea"></div>
+        <div id = "replyArea2"></div>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        let arr1 = [];
+        for(let i=0; i<5; i++){
+            arr1[i] = [];
+            for(let j=0; j<5; j++){
+                arr1[i][j] = i * 5 + j + 1;
+            }
+        }
+        console.log(arr1);
+
+
+        let arr2 = [];
+        for(let i=0; i<5; i++){
+            arr2[i] = [];
+            for(let j=0; j<5; j++){
+                arr2[i][j] = i * 15 + j * 3 + 1;
+            }
+        }
+        console.log(arr2);
+
+
+        let arr3 = [];
+        for(let i = 0; i<5; i++){
+            arr3[i] = [];
+            for(let j=0; j<5; j++){
+                arr3[i][j] = i * 0 + i*j;
+            }
+        }
+        console.log(arr3);
+
+
+        let arr4 = [];
+        for(let i=0; i<5; i++){
+            arr4[i] = [];
+            for(let j=0; j<5; j++){
+                arr4[i][j] = "" + i + j;
+            }
+        }
+        console.log(arr4);
+
+    </script>
+</html>

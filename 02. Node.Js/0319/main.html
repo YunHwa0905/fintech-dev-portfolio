@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <b>hello html</b>
+        <br>
+        <input type = "text" value="텍스트" id = "text1">
+        <input type = "button" value="검색" id = "btn">
+    </body>
+    <script>
+        document.getElementById("text1").value = "변경된 텍스트로"
+        console.log(document.getElementById("btn"));
+        document.getElementById("btn").addEventListener('click', function(){
+            alert( document.getElementById("text1").value)
+        })
+    </script>
+</html> 

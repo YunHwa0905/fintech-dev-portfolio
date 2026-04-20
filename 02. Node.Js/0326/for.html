@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <span id ="textOutput"> 
+        </span>
+    </body>
+    <script>
+        // for(alert(1); !alert(2); alert(4)){
+        //     alert(3)
+        // }
+
+        // for(let i=0; i<3;){
+        //     console.log(i);
+        //     i++
+        // }
+
+        // console.log(1+1)
+        // console.log(7%4)
+        
+        // let str1 = "abc"
+        // let str2 = "def"
+        // let str3 = str1 + str2
+        // console.log(str1 + str2 + str3)
+
+         let numbers = "";
+        
+        for(let i=1; i<=100; i++){
+            numbers += i + " ";
+            
+            if(i%10 == 0){
+                numbers += "<br>";
+            }
+        }
+
+        document.getElementById("textOutput").innerHTML = numbers;
+        console.log(numbers);
+    </script>
+</html> 

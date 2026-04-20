@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <span id ="textOutputFront"> 
+        </span><br>
+        <input type="text" id="inputTxt"><br>
+        <input type="button" value="앞" id ="frontBtn">
+        <input type="button" value="뒤" id ="BackBtn"><br>
+        <span id ="textOutputBack"> 
+        </span>
+    </body>
+    <script>
+        document.getElementById("frontBtn").addEventListener('click', function(){
+
+            let input = document.getElementById("inputTxt").value;
+            if (input.length>0){
+                let firstChar = input[0];
+                let rest = input.slice(1);
+
+                document.getElementById("textOutputFront").innerHTML = `<span style="color:blue;">${firstChar}</span>${rest}`
+            }
+            
+        })
+
+        document.getElementById("BackBtn").addEventListener('click', function(){
+       
+            let input = document.getElementById("inputTxt").value;
+            if(input.length>0){
+                let firstChar = input[0];
+                let rest = input.slice(1);
+
+                document.getElementById("textOutputBack").innerHTML = `<span style="color:red;">${firstChar}</span>${rest}`
+            }
+        })
+    </script>
+</html> 

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+        남성<input type="radio" name="r1">
+        여성<input type="radio" name="r1">
+        알려주기시름<input type="radio" name="r1">
+        비밀<input type="radio" name="r1">
+        미정<input type="radio" name="r1">
+        <input type="button" value="확인" id="chkBtn"
+    </body>
+    <script>
+        document.getElementById("chkBtn").addEventListener('click', function(){
+            let radioArr = document.getElementsByName("r1");
+            for(let i=0; i<radioArr.length; i++){
+            console.log(radioArr[i].checked);
+            }
+        });
+    </script>
+</html>

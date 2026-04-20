@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+        <div id = "replyArea"></div>
+        <div id = "replyArea2"></div>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        // for(let i=120; i<141; i++){
+        //      let temp = i;
+        //      let has369 = false;
+
+        //      while(temp>0){
+        //         let digit = temp%10;
+        //         if(digit == 3 || digit == 6 || digit == 9){
+        //             has369 = true;
+        //             break;
+        //         }
+        //         temp = Math.floor(temp / 10);
+        //      }
+
+        //      if(has369){
+        //         console.log('짝');
+        //      }else{
+        //         console.log(i);
+        //      }
+        // }
+
+        // let result = ''; 
+
+        // for(let i = 120; i < 141; i++) {
+        //     let digits = i.toString().split('');
+        //     if(digits.some(d => d == 3 || d == 6 || d == 9)) {
+        //         result += '짝<br>';
+        //     } else {
+        //         result += i + '<br>';
+        //     }
+        // }
+        
+        // document.getElementById('replyArea').innerHTML = result;
+
+        let result = ""
+
+        for(let i=120; i<141; i++){
+
+            let array1 = i + "";
+
+            if(array1[0]== 3 || array1[0] == 6 || array1[0] == 9){
+                result += "짝" + `<br>`    
+            }
+           else if(array1[1] ==3 || array1[1] ==6 || array1[1] ==9){
+                result += "짝" + `<br>`
+           }
+           else if(array1[2] ==3 || array1[2] ==6 || array1[2] ==9){
+                result += "짝" + `<br>`
+           }
+           else{
+               result += i +  `<br>`
+           } 
+
+           
+           }
+        result +=`<br>`
+        document.getElementById("replyArea").innerHTML = result;
+
+
+        let result2 = ""
+
+        for(let i=1000; i<1100; i++){
+
+            let array1 = i + "";
+            let count = 0;
+
+            for(let j=0; j<array1.length; j++){
+                
+                if(array1[j] == 3 || array1[j] == 6 || array1[j] == 9){
+                    count++;
+                }
+
+            }
+
+            if(count != 0){
+                    result2 += '짝'.repeat(count) +  `<br>`;
+                }else{
+                    result2 += i +  `<br>`;
+                }
+
+            
+
+           
+           }
+        document.getElementById("replyArea2").innerHTML = result2;
+
+        for(let j=1000; j<1100; j++){
+           let num = j;
+           num += "";
+           let clapStr = "";
+           for(let i=0; i<num.length;i++){
+                if(num[i]%3==0 && num[i]!=0){
+                    clapStr += "짝";
+                }
+            }
+            if(clapStr==""){
+                console.log(num);
+            }else{
+                console.log(num, clapStr);
+            }
+
+            
+
+           
+           }
+
+    </script>
+</html> 
