@@ -42,6 +42,5 @@ Thumbs.db
 
 results/
 0.46.1
-02. Fine_tune.ipynb
-03. Load_And_Save.ipynb
 01. AI/vibe_claude/data/processed/alpaca_legal.json
+alpaca_legal.json
