@@ -26,3 +26,6 @@ pydantic
 # jupyter
 ipykernel
 notebook
+
+pillow
+pdf2image
