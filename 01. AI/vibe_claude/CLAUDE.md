@@ -78,8 +78,8 @@ vibe_claude/
 ```env
 # HuggingFace
 HF_TOKEN=your_hf_token
-HF_DATASET_REPO=yunhwa/legal_qa
-HF_MODEL_REPO=yunhwa/gemma3-4b-legal
+HF_DATASET_REPO=yunhwa/law_instruct
+HF_MODEL_REPO=yunhwa/law_alpaca
 
 # 국가법령정보 Open API
 LAW_API_KEY=your_law_api_key
