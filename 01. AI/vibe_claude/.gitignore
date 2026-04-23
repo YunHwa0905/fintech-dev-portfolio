@@ -44,3 +44,10 @@ results/
 0.46.1
 01. AI/vibe_claude/data/processed/alpaca_legal.json
 alpaca_legal.json
+
+# 학습된 모델 (LoRA 어댑터, 토크나이저 등)
+notebooks/models/
+notebooks/results/
+
+# 처리된 데이터 전체
+data/processed/
