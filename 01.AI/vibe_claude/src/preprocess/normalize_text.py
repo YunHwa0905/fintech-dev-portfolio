@@ -1,6 +1,6 @@
 import re
 
-def basic_normalize(text: str) -> str:
+def normalize_legal_text(text: str) -> str:
     """기계적인 노이즈 제거 및 기본 가독성 확보"""
     # 1. 과도한 공백 및 줄바꿈 정리
     text = re.sub(r'\s+', ' ', text).strip()
