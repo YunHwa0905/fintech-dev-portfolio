@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>function</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <input type="text" id="num3">
+    <button id="btn">결과보기</button>
+    <br>
+    <span id = "result"></span>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    const func1 = function(num1, num2, num3){
+        return Math.max(Number(num1), Number(num2), Number(num3));
+    }
+
+    $('#btn').click(function () {
+            $('#result').html(func1($('#num1').val(), $('#num2').val(), $('#num3').val()));
+    });
+
+    
+</script>
+</html>

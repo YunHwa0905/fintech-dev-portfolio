@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ajax</title>
+</head>
+<body>
+    <input type="text" id="num1" placeholder="가격 입력">
+    <button id="btn">구입확인</button>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $('#btn').click(function () {
+            $.ajax({
+                url: '/item',
+                data: {
+                    num1: $('#num1').val()
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
