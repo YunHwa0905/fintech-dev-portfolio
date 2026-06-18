@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>timer</title>
+</head>
+<body>
+   <input type="text" id="timerNum" placeholder="수를 입력하시오">
+   <input type="button" id="numPlus" value="배수 증가">
+   <input type="button" id="timerStart" value="타이머 시작">
+   <input type="button" id="timerStop" value="타이머 종료">
+   <span id="timer"></span>
+   <br>
+   <span id="numList"></span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+    let interval;
+    let intervalPlus;
+
+    $("#numPlus").click(function(){
+        let num = parseInt($(`#timerNum`).val());
+        let count = 1;
+
+        setTimeout(function(){
+            intervalPlus = setInterval(function(){
+                $(`#numList`).append(num*count + `<br>`);
+                count++;
+            }, 1000);
+        }, 3000);
+    });
+
+    $("#timerStart").click(function(){
+        setTimeout(function(){
+            interval = setInterval(function(){
+                let current = parseInt($(`#timer`).text()) || 0
+                $('#timer').text(current+1);
+            }, 1000);
+        }, 3000);    
+    });
+
+    $("#timerStop").click(function(){
+        setTimeout(function(){
+            clearInterval(interval)
+        }, 3000)
+    });
+</script>
+</html>

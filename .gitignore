@@ -1,0 +1,112 @@
+# 개인 파일
+04. 개인 파일/
+
+# ── AI / ML ──────────────────────────────────────────────────────────────────
+
+# 대용량 모델 바이너리
+*.gguf
+*.safetensors
+*.bin
+
+# 파인튜닝된 모델 디렉터리 (수 GB)
+01.AI/kopo_gemma3_4b_20260410/
+01.AI/ggufs/kopo_gemma3_4b_20260410/
+
+# llama.cpp (별도 git 저장소 — 서브모듈 아님)
+01.AI/ggufs/llama.cpp/
+
+# 교수님 클론 레포 / 개인 프라이빗 레포 (중첩 git 저장소)
+01.AI/multimodal_training/
+01.AI/stock_private/
+
+# HuggingFace 캐시
+.cache/
+
+# 학습용 데이터셋 (대용량 JSON/CSV 등)
+**/dataset/
+**/datasets/
+
+# Python 가상환경
+.venv/
+.mlcore/
+venv/
+env/
+
+# Python 캐시
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter 체크포인트
+.ipynb_checkpoints/
+
+# ── 민감한 정보 ───────────────────────────────────────────────────────────────
+
+.env
+*.env
+!*.env.example
+!.env.example
+
+secret.json
+!secret.json.example
+
+# KIS API 토큰 캐시 (인증 정보 포함)
+.kis_token_cache.json
+
+# ── Java / Eclipse ────────────────────────────────────────────────────────────
+
+# 컴파일 결과물
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven 빌드 출력
+target/
+
+# Eclipse 프로젝트 메타데이터
+.classpath
+.project
+.settings/
+.springBeans
+.springWebflow
+
+# Eclipse 컴파일 출력 (*.class로 커버되지만 빈 폴더 방지)
+**/bin/
+
+# Eclipse Tomcat 서버 설정 (자동 생성)
+03.Java/Servers/
+
+# ── Apache Tomcat 설치 파일 ───────────────────────────────────────────────────
+
+03.Java/apache/
+
+# ── Node.js ───────────────────────────────────────────────────────────────────
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── IDE / 에디터 ──────────────────────────────────────────────────────────────
+
+.idea/
+*.iml
+.vscode/
+
+# DB / 설정 파일 (비밀번호 포함)
+**/db.properties
+**/datasource.properties
+
+# 문서 파일 (보고서 등)
+*.docx
+*.pptx
+*.xlsx
+
+# ── OS 생성 파일 ──────────────────────────────────────────────────────────────
+
+.DS_Store
+Thumbs.db
+Desktop.ini

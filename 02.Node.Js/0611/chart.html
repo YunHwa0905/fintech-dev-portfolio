@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+      
+</head>
+
+<body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+   
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawCurveTypes);
+
+    function drawCurveTypes() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'Dogs');
+        data.addColumn('number', 'Cats');
+        data.addColumn('number', 'Cows');
+
+        for(let i=0; i<=10; i++){
+            data.addRow([i, Math.floor(Math.random() * 11), Math.floor(Math.random() * 11), Math.floor(Math.random() * 11)]);
+        }
+
+        var options = {
+            hAxis: {
+                title: 'Time',
+                ticks: [0,1,2,3,4,5,6,7,8,9,10]
+            },
+            vAxis: {
+                
+            },
+            series: {
+                
+            }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+
+    setInterval(function(){
+        drawCurveTypes(); 
+    }, 1000);
+
+</script>
+</html>

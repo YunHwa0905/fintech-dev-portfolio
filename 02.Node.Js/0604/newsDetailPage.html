@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>뉴스 상세</title>
+</head>
+<body>
+    제목
+    <div id="result"></div>
+    <br>
+    내용
+    <div id="result2"></div>
+    <br>
+    <input type="button" id="updateBtn" value="수정하기">
+    <input type="button" id="goToList" value="목록으로">
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    const id = new URLSearchParams(location.search).get('id');
+    console.log(id);
+
+    $.ajax({
+        url: `/newsDetail?id=${id}`,
+        success: function(response){
+            $('#result').html(response[0].title);
+            $('#result2').html(response[0].content);
+        }
+    });
+
+    $("#updateBtn").click(function(){
+        location.href = `/newsUpdatePage?id=${id}`;
+    })
+
+    $("#goToList").click(function(){
+        location.href = `/newsListPage`;
+    })
+</script>
+</html>

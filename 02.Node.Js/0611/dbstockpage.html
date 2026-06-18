@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>chart</title>   
+</head>
+
+<body>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+   
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+    setInterval(function(){
+        $.ajax({
+            url:`/stockFromNaver`,
+            success: function(response) {
+                let responseText = response.split("(")[1].split(")")[0];
+                let responseJson = JSON.parse(responseText);
+                let price = responseJson.result.areas[0].datas[0].nv;  
+    
+                $('#stockprice').html(price);
+
+                $.ajax({
+                url: '/dbstock',
+                method: 'POST',
+                data: { price: price }
+            });
+            }
+        });
+    }, 3000);
+
+
+     google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawCurveTypes);
+
+    function drawCurveTypes() {
+        $.ajax({
+            url: '/getstock',
+            success: function(response) {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', '시간');      // number → string
+                data.addColumn('number', '삼성전자');
+
+                for(let i = 0; i < response.length; i++){
+                    let time = response[i].created_at.substring(11, 19); // HH:MM:SS
+                    data.addRow([time, response[i].price]);
+                }
+
+                var options = {
+                    title: '삼성전자 실시간 주가',
+                    hAxis: { title: 'Time' },
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+        });
+    }
+
+    setInterval(function(){
+        drawCurveTypes(); 
+    }, 3000);
+
+
+</script>
+</html>

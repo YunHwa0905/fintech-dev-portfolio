@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>chart</title>   
+</head>
+
+<body>
+    stock
+    <span id="stockprice"></span>
+    <span id="timer"></span>
+   
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    let sec = 0;
+    setInterval(function(){
+        $.ajax({
+            url:`/stockFromNaver`,
+            success: function(response) {
+                let responseText = response.split("(")[1].split(")")[0];
+                let responseJson = JSON.parse(responseText);
+                $('#stockprice').html(responseJson.result.areas[0].datas[0].nv);
+                $('#timer').html(sec);
+                sec++;
+            }
+        });
+    }, 1000);
+
+</script>
+</html>

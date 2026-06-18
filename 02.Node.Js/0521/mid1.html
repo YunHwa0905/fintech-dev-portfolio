@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <span id = "radioList"></span>
+        <input type="button" value="출력" id="btn">
+        
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        let radioList = document.getElementById("radioList");
+
+        for(let i=1; i<=4; i++){
+            let row = `라디오${i} : `;
+
+            for(j=1; j<=10; j++){
+                row += `${j}<input type="radio" name="r${i}" value="${j}">`
+
+            }
+
+            row += `<br>`;
+            radioList.innerHTML += row;
+
+        }
+
+        document.getElementById("btn").addEventListener('click',function(){
+
+            let num = [];
+            let max = 0;
+            let min = 11;
+
+            for(let i=1; i<=4; i++){
+
+                let radios = document.getElementsByName(`r${i}`);
+
+                for(let j=0; j<radios.length; j++){
+
+                    if(radios[j].checked){
+                        num[i] = Number(radios[j].value);
+                    }
+                }
+
+            }
+
+            for(let i=1; i<=4; i++){
+
+                if(num[i] > max){
+                    max = num[i];
+                }
+
+                if(num[i] < min){
+                    min = num[i];
+                }
+                
+            }
+
+            console.log(max**min);
+
+        });
+
+    </script>
+</html> 

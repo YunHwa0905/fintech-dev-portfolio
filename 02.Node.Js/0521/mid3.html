@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <input type="text" id="cm" placeholder="키를 입력하시오">
+        <input type="text" id="kg" placeholder="체중을 입력하시오">
+        <input type="button" id="btn" value="확인">
+        <br>
+        <span id="result"></span>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        $('#btn').click(function(){
+            $.ajax({
+                url: 'getBMI',
+                data: {
+                    cm: $("#cm").val(),
+                    kg: $("#kg").val()
+                },
+                success: function(data){
+                    $('#result').html(`${data}`);
+                }
+            })
+        })
+        
+
+    </script>
+</html> 

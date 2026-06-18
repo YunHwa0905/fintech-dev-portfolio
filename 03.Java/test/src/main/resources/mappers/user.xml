@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kopo.user.dao.UserMapper">
+
+	<select id="selectUserList" resultType="user">
+		SELECT * FROM users ORDER
+		BY userid DESC
+	</select>
+
+	<select id="selectUserById" parameterType="string"
+		resultType="user">
+		SELECT * FROM users WHERE userid = #{id}
+	</select>
+
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO users (userid,
+		name, gender, city)
+		VALUES (#{userId}, #{name}, #{gender}, #{city})
+	</insert>
+
+	<update id="updateUser" parameterType="user">
+		UPDATE users SET
+		name=#{name}, gender=#{gender}, city=#{city}
+		WHERE userid=#{userId}
+	</update>
+
+	<delete id="deleteUser" parameterType="string">
+		DELETE FROM users WHERE
+		userid = #{id}
+	</delete>
+
+	<select id="selectUserListWithPaging" parameterType="criteria"
+		resultType="user">
+		SELECT * FROM users
+		ORDER BY userid DESC
+		LIMIT #{pageStart}, #{perPageNum}
+	</select>
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM users
+	</select>
+
+
+</mapper>

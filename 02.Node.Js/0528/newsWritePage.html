@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <input type="text" id="title" placeholder="제목을 입력하세요">
+        <input type="text" id="content" placeholder="내용을 입력하세요">
+        <input type="button" value="글쓰기" id="btn">
+        
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        $('#btn').click(function(){
+            $.ajax({
+                url: 'insert',
+                data: {
+                    title: $("#title").val(),
+                    content: $("#content").val()
+                },
+                success: function(data){
+                    console.log(data);
+                }
+            })
+        });
+
+    </script>
+</html> 

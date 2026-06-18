@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <input type="button" value="추가" id="PlusBtn">
+        <br>
+        <input type="button" value="출력" id="PrintBtn">
+        <br>
+        <span id = "input"></span>
+        <span id = "result"></span>
+    </body>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+
+        let input = document.getElementById("input");
+        let result = document.getElementById("result");
+        let count = 0;
+
+        document.getElementById("PlusBtn").addEventListener('click',function(){
+
+            let row = `<input type="text" id="t${count}"><br>`;
+            input.innerHTML += row;
+            count++;
+            
+        });
+
+        document.getElementById("PrintBtn").addEventListener('click',function(){
+
+            let sum = 0;
+
+            for(let i=0; i<count; i++){
+                sum += Number(document.getElementById(`t${i}`).value);
+            }
+
+            result.innerHTML = sum;
+
+        });
+
+    </script>
+</html> 

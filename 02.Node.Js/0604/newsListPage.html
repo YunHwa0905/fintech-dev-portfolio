@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>뉴스 목록</title>
+</head>
+<body>
+    <b>뉴스 목록</b>
+    <br>
+    <span id="newsTitleArea"></span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+    $.ajax({
+        url: '/newsList',
+        success: function(response){
+            for(let i = 0; i < response.length; i++){
+                $("#newsTitleArea").append(`<span id="news_title_${response[i].id}"> ${response[i].title}
+                    <input type="button" value="상세보기" onclick="moveToDetailPage(${response[i].id})">
+                    <input type="button" value="수정하기" onclick="newsUpdatePage(${response[i].id})">
+                    <input type="button" value="삭제하기" onclick="newsDelete(${response[i].id})">
+                    <br></span>`);
+            }
+        }
+    });
+
+    function moveToDetailPage(id){
+        location.href = `/newsDetailPage?id=${id}`;
+    }
+
+    function newsUpdatePage(id){
+        location.href = `/newsUpdatePage?id=${id}`;
+    }
+
+
+    function newsDelete(id){
+        if(confirm("삭제 하시겠습니까?")){
+            $.ajax({
+                url: '/newsDelete',
+                type: 'POST',
+                data: { id: id },
+                success: function(response){
+                    alert(response);
+                    if(response=="삭제 성공"){
+                        $(`#news_title_${id}`).remove();
+                    }
+                },
+            });
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hello" class="com.kopo.hkcode.pojo.Hello">
+		<property name="name" value="hkcode"></property>
+		<property name="printer" ref="printer"></property>
+	</bean>
+	
+	<bean id="printer" class="com.kopo.hkcode.pojo.StringPrinter"></bean>
+	<bean id="consolePrinter" class="com.kopo.hkcode.pojo.ConsolePrinter"></bean>
+</beans>

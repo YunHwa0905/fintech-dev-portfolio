@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kopo.stock.dao.StockMapper">
+
+	<select id="selectStockList" resultType="StockVO">
+		SELECT * FROM hourly_price
+		WHERE datetime = (SELECT MAX(datetime) FROM hourly_price)
+		ORDER BY ticker ASC
+	</select>
+
+	<select id="selectStockById" parameterType="string"
+		resultType="StockVO">
+		SELECT * FROM hourly_price WHERE ticker = #{ticker}
+	</select>
+
+	<insert id="insertStock" parameterType="StockVO">
+		INSERT INTO hourly_price
+		(ticker, datetime, open, high, low, close, volume,
+		amount)
+		VALUES
+		(#{ticker}, #{datetime}, #{open}, #{high}, #{low}, #{close},
+		#{volume}, #{amount})
+	</insert>
+
+	<update id="updateStock" parameterType="StockVO">
+		UPDATE hourly_price SET
+		volume=#{volume}, amount=#{amount}
+		WHERE ticker=#{ticker}
+	</update>
+
+	<delete id="deleteStock" parameterType="string">
+		DELETE FROM hourly_price
+		WHERE ticker = #{ticker}
+	</delete>
+
+</mapper>

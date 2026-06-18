@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 일반 주석 <settings> DB의 스네이크 케이스(_ )를 자바의 카멜 케이스로 자동 변환 <setting name="mapUnderscoreToCamelCase" 
+		value="true"/> </settings> -->
+	<typeAliases>
+		<typeAlias alias="user" type="com.kopo.user.vo.UserVO" />
+		<typeAlias alias="criteria"
+			type="com.kopo.common.paging.Criteria" />
+	</typeAliases>
+</configuration>

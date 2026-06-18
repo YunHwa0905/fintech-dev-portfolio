@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>뉴스 목록</title>
+</head>
+<body>
+    <b>뉴스 목록</b>
+    <span id="news"></span>
+
+    <a href="https://www.naver.com">네이버로 이동</a>
+    <a href="https://www.naver.com"><input type="button" value="네이버로 이동"></a>
+    <input type="button" value="네이버로 이동2" onclick="location.href='https://www.naver.com';">
+    <input type="button" value="네이버로 이동3" onclick="moveToNaver()">
+    <input type="button" value="네이버로 이동4" id="moveToNaverBtn">
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    function moveToNaver(){
+        location.href = "https://www.naver.com";
+    }
+
+    $("#moveToNaverBtn").click(function(){
+        location.href = "https://www.naver.com";
+    });
+
+    $.ajax({
+        url: '/newsList',
+        success: function(response){
+            let html = '';
+            for(let i = 0; i < response.length; i++){
+                html += `<div onclick="moveToDetailPage(${response[i].id})">${response[i].id} ${response[i].title}</div>`;
+            }
+            $('#news').append(html);
+        }
+    });
+
+    function moveToDetailPage(id){
+        location.href = `/newsDetailPage?id=${id}`;
+    }
+</script>
+</html>
