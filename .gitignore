@@ -31,6 +31,7 @@
 .mlcore/
 venv/
 env/
+**/.venv/
 
 # Python 캐시
 __pycache__/
