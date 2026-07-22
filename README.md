@@ -1,4 +1,4 @@
-# 핀테크 개발 포트폴리오 2026
+# 폴리텍 포트폴리오 2026
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
@@ -15,7 +15,7 @@
 
 ---
 
-한국폴리텍대학 핀테크 개발 과정(2026)의 학습 과정을 담은 포트폴리오입니다.  
+한국폴리텍대학 스마트금융 과정(2026)의 학습 과정을 담은 포트폴리오입니다.  
 **AI/ML 파인튜닝**, **Node.js 웹 개발**, **Java Spring 백엔드** 세 트랙으로 구성되며,  
 메인 프로젝트는 Gemma3-4b를 법률 데이터로 파인튜닝한 **AI 법률 QA 챗봇**입니다.
 
