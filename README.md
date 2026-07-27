@@ -12,11 +12,13 @@
 ![MyBatis](https://img.shields.io/badge/MyBatis-DC382D?style=flat-square&logo=redis&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL_8-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
 
 ---
 
 한국폴리텍대학 스마트금융 과정(2026)의 학습 과정을 담은 포트폴리오입니다.  
-**AI/ML 파인튜닝**, **Node.js 웹 개발**, **Java Spring 백엔드** 세 트랙으로 구성되며,  
+**AI/ML 파인튜닝**, **데이터 분석(pandas)**, **Node.js 웹 개발**, **Java Spring 백엔드** 네 트랙으로 구성되며,  
 메인 프로젝트는 Gemma3-4b를 법률 데이터로 파인튜닝한 **AI 법률 QA 챗봇**입니다.
 
 ---
@@ -57,9 +59,15 @@ fintech-dev-portfolio/
 │   ├── hkcode/                     # Spring IoC/DI (POJO → 어노테이션 → JDBC)
 │   └── test/                       # Spring MVC + MyBatis (주식/유저 CRUD + 페이징)
 │
-└── 04.Git_branch/                  # Git 브랜치 전략 실습
-    ├── calc.py
-    └── util.py
+├── 04.Git_branch/                  # Git 브랜치 전략 실습
+│   ├── calc.py
+│   └── util.py
+│
+└── 05.data/                        # 데이터 분석 트랙 (pandas/numpy)
+    ├── codeset/                    # 실습 노트북
+    │   ├── 01.data_analysis.ipynb  # 로드/타입변환/조회/정렬/그룹바이/이동평균/join
+    │   └── 계절성지수.ipynb          # 판매 데이터 계절성지수 실습
+    └── dataset/                    # 실습용 데이터셋 (용량 이슈로 Git 미추적)
 ```
 
 ---
@@ -97,6 +105,16 @@ fintech-dev-portfolio/
 | RPS | MVC 패턴, 서비스 레이어 분리, 게임 로직 설계 |
 | hkcode | Spring IoC/DI (POJO → XML Bean → 어노테이션), Spring JDBC, MySQL 연동 |
 | test | Spring MVC, MyBatis Mapper/XML, 페이징(Criteria/PageMaker), REST API, JSTL |
+
+### 05. 데이터 분석 (pandas/numpy)
+
+| 주제 | 학습 내용 |
+|---|---|
+| 데이터 로드/조회 | CSV 불러오기, 행/컬럼 조회, 데이터 타입 변환 |
+| 데이터 조작 | 조건부 컬럼 생성(DB CASE WHEN 방식), 컬럼간 연산 |
+| 정렬/집계 | sort_values, groupby 집계 |
+| 시계열 | 이동평균(rolling), YEAR/WEEK 파생 컬럼, 계절성지수 산출 |
+| 병합 | merge/join을 통한 마스터 데이터 결합 |
 
 ---
 
@@ -174,6 +192,19 @@ mvn clean package
 
 > `src/main/resources/`의 DB 설정 파일을 로컬 환경에 맞게 수정해야 합니다.  
 > (`db.properties`, `datasource.properties` — **절대 커밋하지 말 것**)
+
+---
+
+### 데이터 분석 실습 (`05.data`)
+
+```bash
+cd 05.data
+.venv\Scripts\activate      # Windows
+pip install pandas numpy jupyter
+jupyter notebook codeset/01.data_analysis.ipynb
+```
+
+> `dataset/` 폴더는 용량 문제로 `.gitignore` 처리되어 있어 Git에는 포함되지 않습니다.
 
 ---
 
