@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <input type="text" id="query">
+    <button type="button" id="btn">버튼</button>
+    <div id="table"></div>
+    
+    <script>
+        $(function(){
+            const btn = $('#btn')
+            btn.click(()=>{
+                let query = $('#query').val();
+                console.log(query)
+
+                $.ajax({
+                    url: "http://localhost/query",
+                    type: "GET",
+                    data: {query},
+                    dataType: "json",
+                    success: function(response) {
+                        console.log("성공:", response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("에러 발생:", error);
+                    }
+                });
+            })
+
+        })
+    </script>
+</body>
+</html>
