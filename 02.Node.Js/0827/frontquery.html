@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Front Query</title>
+</head>
+<body>
+    <input type="text" id="frontquery">
+    <input type="button" value="ajax" id="ajaxBtn">
+</body>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $("ajaxBtn").click(function() {
+        var frontquery = $("#frontquery").val();
+        $.ajax({
+            url: "/queryfromfront?q=" + $("#frontquery").val(),
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    });
+</script>
+</html>

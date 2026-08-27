@@ -1,0 +1,124 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>학식 메뉴 인기도</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: sans-serif; padding: 20px; }
+  .tables { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+  table { border-collapse: collapse; }
+  td, th { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
+  caption { font-weight: bold; background: #f0f0f0; padding: 4px; }
+  button { margin-right: 8px; padding: 6px 12px; }
+  #popularityChart { max-width: 600px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h2>이번주 학식 메뉴</h2>
+
+<button onclick="crawlMenu()">메뉴 새로 불러오기(크롤링)</button>
+<button onclick="drawChart()">그래프그리기</button>
+<a href="/menu/download"><button>엑셀다운로드</button></a>
+
+<div class="tables" id="menuTables"></div>
+
+<canvas id="popularityChart" width="600" height="300"></canvas>
+
+<script>
+const DAYS = ['월', '화', '수', '목', '금'];
+let chartInstance = null;
+
+async function crawlMenu() {
+    await fetch('/crawl');
+    loadMenu();
+}
+
+async function loadMenu() {
+    const res = await fetch('/menu/list');
+    const rows = await res.json();
+
+    const grouped = {};
+    DAYS.forEach(d => grouped[d] = []);
+    rows.forEach(r => grouped[r.day].push(r));
+
+    const container = document.getElementById('menuTables');
+    container.innerHTML = '';
+
+    DAYS.forEach(day => {
+        const table = document.createElement('table');
+
+        const caption = document.createElement('caption');
+        caption.textContent = day + '요일';
+        table.appendChild(caption);
+
+        grouped[day].forEach(item => {
+            const tr = document.createElement('tr');
+
+            const tdName = document.createElement('td');
+            tdName.textContent = item.menu_name;
+            tr.appendChild(tdName);
+
+            const tdSelect = document.createElement('td');
+            const select = document.createElement('select');
+            [1,2,3, 4, 5, 6, 7, 8, 9, 10].forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v;
+                opt.textContent = v;
+                if (v === item.popularity) opt.selected = true;
+                select.appendChild(opt);
+            });
+            select.addEventListener('change', () => updateCount(item.id, select.value));
+            tdSelect.appendChild(select);
+            tr.appendChild(tdSelect);
+
+            table.appendChild(tr);
+        });
+
+        container.appendChild(table);
+    });
+}
+
+async function updateCount(id, popularity) {
+    await fetch('/menu/count', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, popularity: Number(popularity) })
+    });
+}
+
+async function drawChart() {
+    const res = await fetch('/menu/popularity');
+    const data = await res.json();
+
+    const labels = data.map(d => d.day);
+    const values = data.map(d => Number(d.avgPopularity));
+
+    const ctx = document.getElementById('popularityChart').getContext('2d');
+    if (chartInstance) chartInstance.destroy();
+
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: '요일별 평균 인기도',
+                data: values,
+                borderColor: 'blue',
+                fill: false,
+                tension: 0.2
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: false }
+            }
+        }
+    });
+}
+
+loadMenu();
+</script>
+</body>
+</html>
